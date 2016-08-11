@@ -1,0 +1,20 @@
+.container
+  .page-header
+    = link_to foundations_path, :class => 'btn btn-default' do
+      %span.glyphicon.glyphicon-list-alt
+      Back
+    = link_to edit_foundation_path(@foundation), :class => 'btn btn-primary' do
+      %span.glyphicon.glyphicon-pencil
+      Edit
+    %h1 Show foundation
+
+  %dl.dl-horizontal
+    %dt User:
+    %dd= @foundation.user_id
+    %dt Name:
+    %dd= @foundation.name
+    %dt Photo url:
+    %dd= @foundation.photo_url
+    %dt Description:
+    %dd= @foundation.description
+

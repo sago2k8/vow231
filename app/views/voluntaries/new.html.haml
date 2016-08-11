@@ -1,0 +1,9 @@
+.container
+  .page-header
+    = link_to voluntaries_path, :class => 'btn btn-default' do
+      %span.glyphicon.glyphicon-list-alt
+      Back
+    %h1 New voluntary
+
+  = render 'form'
+

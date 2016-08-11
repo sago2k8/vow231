@@ -1,0 +1,27 @@
+.container
+  .page-header
+    = link_to new_voluntary_path, :class => 'btn btn-primary' do
+      %span.glyphicon.glyphicon-plus
+      New Voluntary
+    %h1 Listing voluntaries
+
+  .table-responsive
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th User
+          %th Name
+          %th Photo url
+          %th
+          %th
+          %th
+
+      %tbody
+        - @voluntaries.each do |voluntary|
+          %tr
+            %td= voluntary.user_id
+            %td= voluntary.name
+            %td= voluntary.photo_url
+            %td= link_to 'Show', voluntary
+            %td= link_to 'Edit', edit_voluntary_path(voluntary)
+            %td= link_to 'Destroy', voluntary, :data => { confirm: 'Are you sure?' }, :method => :delete

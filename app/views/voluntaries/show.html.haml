@@ -1,0 +1,18 @@
+.container
+  .page-header
+    = link_to voluntaries_path, :class => 'btn btn-default' do
+      %span.glyphicon.glyphicon-list-alt
+      Back
+    = link_to edit_voluntary_path(@voluntary), :class => 'btn btn-primary' do
+      %span.glyphicon.glyphicon-pencil
+      Edit
+    %h1 Show voluntary
+
+  %dl.dl-horizontal
+    %dt User:
+    %dd= @voluntary.user_id
+    %dt Name:
+    %dd= @voluntary.name
+    %dt Photo url:
+    %dd= @voluntary.photo_url
+

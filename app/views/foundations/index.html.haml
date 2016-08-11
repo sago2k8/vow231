@@ -1,0 +1,29 @@
+.container
+  .page-header
+    = link_to new_foundation_path, :class => 'btn btn-primary' do
+      %span.glyphicon.glyphicon-plus
+      New Foundation
+    %h1 Listing foundations
+
+  .table-responsive
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th User
+          %th Name
+          %th Photo url
+          %th Description
+          %th
+          %th
+          %th
+
+      %tbody
+        - @foundations.each do |foundation|
+          %tr
+            %td= foundation.user_id
+            %td= foundation.name
+            %td= foundation.photo_url
+            %td= foundation.description
+            %td= link_to 'Show', foundation
+            %td= link_to 'Edit', edit_foundation_path(foundation)
+            %td= link_to 'Destroy', foundation, :data => { confirm: 'Are you sure?' }, :method => :delete
