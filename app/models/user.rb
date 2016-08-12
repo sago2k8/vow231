@@ -1,8 +1,10 @@
 class User < ApplicationRecord
-   belongs_to :foundation
-   belongs_to :voluntary
-   validate :foundation_and_voluntary_mutually_exclusive
-  belongs_to :type_user, polymorphic: true
+  rolify
+  enum role: [:user, :admin]
+  #  belongs_to :foundation
+  #  belongs_to :voluntary
+  #  validate :foundation_and_voluntary_mutually_exclusive
+  # belongs_to :type_user, polymorphic: true
   attr_accessor :oauth_callback
   attr_accessor :current_password
 
@@ -13,29 +15,29 @@ class User < ApplicationRecord
   validates_presence_of     :password, if: :password_required?
   validates_confirmation_of :password, if: :password_required?
   validates_length_of       :password, within: Devise.password_length, allow_blank: true
-  def type_user=(foundation_or_voluntary)
-     case
-     when foundation_or_voluntary.kind_of?(Foundation)
-       self.foundation = foundation_or_voluntary
-       self.voluntary = nil
-     when foundation_or_voluntary.kind_of?(Voluntary)
-       self.voluntary = foundation_or_voluntary
-       self.foundation = nil
-     else
-       raise ArgumentError, "Expected foundation or voluntary"
-     end
-   end
+  # def type_user=(foundation_or_voluntary)
+  #    case
+  #    when foundation_or_voluntary.kind_of?(Foundation)
+  #      self.foundation = foundation_or_voluntary
+  #      self.voluntary = nil
+  #    when foundation_or_voluntary.kind_of?(Voluntary)
+  #      self.voluntary = foundation_or_voluntary
+  #      self.foundation = nil
+  #    else
+  #      raise ArgumentError, "Expected foundation or voluntary"
+  #    end
+  #  end
 
-   def type_user(foundation_or_voluntary)
-     foundation || voluntary
-   end
+  #  def type_user(foundation_or_voluntary)
+  #    foundation || voluntary
+  #  end
 
-   private
-   def foundation_and_voluntary_mutually_exclusive
-     if foundation && voluntary
-       errors.add "Can't have both a foundation and a voluntary"
-     end
-   end
+  #  private
+  #  def foundation_and_voluntary_mutually_exclusive
+  #    if foundation && voluntary
+  #      errors.add "Can't have both a foundation and a voluntary"
+  #    end
+  #  end
 
   def password_required?
     return false if email.blank? || !email_required?

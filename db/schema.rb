@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811050619) do
-
-  create_table "foundations", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.string   "photo_url"
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
+ActiveRecord::Schema.define(version: 20160811193930) do
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
@@ -38,6 +29,16 @@ ActiveRecord::Schema.define(version: 20160811050619) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_roles_on_name"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: ""
     t.string   "encrypted_password",     default: "", null: false
@@ -51,16 +52,15 @@ ActiveRecord::Schema.define(version: 20160811050619) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "role"
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "voluntaries", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.string   "photo_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
   end
 
 end

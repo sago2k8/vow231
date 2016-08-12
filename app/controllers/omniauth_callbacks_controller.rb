@@ -10,11 +10,18 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def generic_callback( provider )
     @identity = Identity.find_for_oauth request.env["omniauth.auth"]
 
-    @user = @identity.user || current_user
+    @user = @identity.user || current_user 
+    
 
     if @user.nil?
       @user = User.create( email: @identity.email, oauth_callback: true )
       @identity.update_attribute( :user_id, @user.id )
+      if params[:type].to_i == 1 
+        @user.add_role("foundation")
+      else
+        @user.update_attribute(:role,2)
+      end
+
     end
 
     if @user.email.blank? && @identity.email
