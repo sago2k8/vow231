@@ -1,8 +1,30 @@
-%footer#footer
+%footer.page-footer
   .container
     .row
-      .col-xs-6
-        %h3 AppName
-      .col-xs-6.text-right
-        %small.copyright
-          T, Copyright &copy; #{ Date.today.year }
+      .col.l6.m6.s12
+        %h5.white-text Uso de la herramienta a nivel corporativo
+        %p.grey-text.text-lighten-4
+          Si tienes una empresa y crees que esta aplicación puede facilitar la difusión de tus mensajes, contáctanos directamente.
+      .col.m6.s12.hide-on-large-only.contacto
+        %h5.white-text.col.s12.m12 Datos de contacto
+        %a.col.email.grey-text.text-lighten-4.center-align.hide-on-large-only{:href => "mailto:dp@danipotter.com?Subject=Contacto%20vow", :target => "_top"}
+          %i.material-icons.tiny email
+          dp@danipotter.com
+        %a.col.grey-text.text-lighten-4.center-align.hide-on-large-only{:href => "tel://573206959002"}
+          %i.tiny.material-icons> phone
+          +57 3206959002
+      .col.l4.m4.push-l3.s12.social-icons
+        %a.col.btn-floating.waves-effect.waves-light.button-vow.facebook.center{:href => "https://www.facebook.com/vownuapp/", :target => "_blank"}
+        %a.col.btn-floating.waves-effect.waves-light.button-vow.center.twitter{:href => "https://twitter.com/vownu", :target => "_blank"}
+        %a.col.btn-floating.waves-effect.waves-light.button-vow.center.instagram{:href => "https://www.instagram.com/vow.nu/", :target => "_blank"}
+  .footer-copyright
+    .container
+      .row
+        .col.l6.m6.s6
+          © 2016 VOW.NU
+        %a.col.l3.grey-text.text-lighten-4.right.right-align.hide-on-med-and-down{:href => "mailto:dp@danipotter.com?Subject=Contacto%20vow", :target => "_top"}
+          %i.material-icons.tiny email
+          dp@danipotter.com
+        %a.col.l3.grey-text.text-lighten-4.right.right-align.hide-on-med-and-down{:href => "tel://573206959002"}
+          %i.tiny.material-icons phone
+          +57 3206959002
