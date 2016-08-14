@@ -83,7 +83,7 @@ group :production do
   gem 'lograge'
 end
 
-gem 'bootstrap-sass'
+gem 'materialize-sass'
 gem 'modernizr-rails'
 gem 'meta-tags', require: 'meta_tags'
 gem 'responders', '~> 2.0'

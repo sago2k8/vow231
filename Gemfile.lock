@@ -40,8 +40,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (7.1.1)
-    autoprefixer-rails (6.4.0.1)
-      execjs
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -52,9 +50,6 @@ GEM
       activesupport
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.3.7)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
     buftok (0.2.0)
     builder (3.2.2)
     byebug (9.0.5)
@@ -204,6 +199,8 @@ GEM
     lumberjack (1.0.10)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    materialize-sass (0.97.6)
+      sass (~> 3.3)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     meta-tags (2.1.0)
@@ -407,7 +404,6 @@ DEPENDENCIES
   better_errors
   bh
   binding_of_caller
-  bootstrap-sass
   byebug
   cancancan
   capybara
@@ -429,6 +425,7 @@ DEPENDENCIES
   launchy
   listen (~> 3.0.5)
   lograge
+  materialize-sass
   meta-tags
   modernizr-rails
   nokogiri

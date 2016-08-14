@@ -1,0 +1,82 @@
+@import "*"
+@import "materialize/components/color"
+@import 'materialize'
+
+.material-icons
+	font-family: 'Material Icons'
+	font-weight: normal
+	font-style: normal
+	font-size: 24px
+	/* Preferred icon size*/
+	display: inline-block
+	line-height: 1
+	text-transform: none
+	letter-spacing: normal
+	word-wrap: normal
+	white-space: nowrap
+	direction: ltr
+	/* Support for all WebKit browsers.*/
+	-webkit-font-smoothing: antialiased
+	/* Support for Safari and Chrome.*/
+	text-rendering: optimizeLegibility
+	/* Support for Firefox.*/
+	-moz-osx-font-smoothing: grayscale
+	/* Support for IE.*/
+	font-feature-settings: 'liga'
+
+body
+	font-family:  "Lucida Grande","Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif
+footer.page-footer
+	background-color: $vow-blue
+
+.nav
+	background-color: $vow-blue
+
+	&-logo
+		vertical-align: center
+		padding: auto 
+		width: 100%
+		
+
+	&-items
+		padding-left: 10vw	
+
+	&-login
+		margin-top: -.8vh
+		padding-right: 1vw
+
+.button-vow
+	background-color: $vow-button
+	text-transform: capitalize
+	&-hide
+		display: none
+
+	&:hover
+		background-color: $vow-button-hover
+	&:active
+		background-color: $vow-button-hover
+	&:visited
+		background-color: $vow-button-hover
+	&:focus
+		background-color: $vow-button-hover
+.page-footer .button-vow
+	margin-right: 1vw
+	background-position: center center
+	background-size: 70%
+	background-repeat: no-repeat
+	&.facebook
+		background-image: url('/social/facebook.png')
+	&.twitter
+		background-image: url('/social/twitter.png')
+	&.instagram
+		background-image: url('/social/instagram.png')
+.logo
+	max-width: 35vw
+	margin-top: 2vh
+	margin-bottom: -2vh
+.contacto 
+	& a 
+		color: $vow-button
+		
+		
+

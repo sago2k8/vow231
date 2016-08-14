@@ -1,10 +1,23 @@
-= navbar position: :static do
-  = vertical do
-    = link_to root_path do
-      %span.glyphicon.glyphicon-cloud
-      Home
-  = horizontal do
-    = nav class: 'navbar-right' do
-      = link_to 'Contact', ""
-      = link_to 'About', ""
-      = render partial: "application/account_dropdown"
+%nav.nav
+  .nav-wrapper
+    .row
+      .col.l1.hide-on-med-and-down
+        %a.brand-logo.col.l1{:href => "#home"}= image_tag "vow-white.svg", :alt => "Logo", :title => "VOW",:class => "nav-logo "
+      %a.button-collapse{"data-activates" => "mobile-demo", :href => "#"}
+        %i.material-icons menu
+      %ul.valign-wrapper.left.hide-on-med-and-down.nav-items.col.l5.push-l1
+        %li.valign
+          %a{:href => "#vow-description"} Qué es VOW?
+        %li
+          %a{:href => "#voluntarios"} Voluntarios
+        %li
+          %a{:href => "#fundaciones"} Fundaciones
+      %ul#mobile-demo.side-nav
+        %li
+          %a{:href => "#vow-description"} Qué es VOW?
+        %li
+          %a{:href => "#voluntarios"} Voluntarios
+        %li
+          %a{:href => "#fundaciones"} Fundaciones
+      %a.right.hide-on-large-only.col.l1{:href => "#"}
+        %i.material-icons perm_identity

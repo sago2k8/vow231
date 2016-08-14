@@ -12,4 +12,28 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
+//= require materialize-sprockets
+function evaluacion(param){
+	if(param.hasClass('offset-l5')){
+		param.removeClass('offset-l5').addClass('push-l3').removeClass('offset-m4');
+	}
+	else {
+		param.addClass('offset-l5').removeClass('push-l3').addClass('offset-m4');
+	}
+
+}
+
+$( document ).ready(function(){
+	 $('registro-pushpin').pushpin({ top: $('#vow-description').offset().top });
+	$(".button-collapse").sideNav();
+	 $('.carousel').carousel();
+	 $('.parallax').parallax();
+	$('#registro').click(function(){
+		evaluacion($(this));
+		$('.button-vow-hide').toggle();
+		
+
+
+	});
+})
+
