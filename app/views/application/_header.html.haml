@@ -2,7 +2,7 @@
   .nav-wrapper
     .row
       .col.l1.hide-on-med-and-down
-        %a.brand-logo.col.l1{:href => "#home"}= image_tag "vow-white.svg", :alt => "Logo", :title => "VOW",:class => "nav-logo "
+        %a.brand-logo.col.l1{:href => "/static_pages/home"}= image_tag "vow-white.svg", :alt => "Logo", :title => "VOW",:class => "nav-logo "
       %a.button-collapse{"data-activates" => "mobile-demo", :href => "#"}
         %i.material-icons menu
       %ul.valign-wrapper.left.hide-on-med-and-down.nav-items.col.l5.push-l1
@@ -12,6 +12,10 @@
           %a{:href => "#voluntarios"} Voluntarios
         %li
           %a{:href => "#fundaciones"} Fundaciones
+      -if current_user != nil
+        = link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, :class => "right hide-on-med-and-down nav-login"
+      -else
+        = link_to "login",(omniauth_authorize_path(:user, :twitter)),:class => "right hide-on-med-and-down nav-login"
       %ul#mobile-demo.side-nav
         %li
           %a{:href => "#vow-description"} Qué es VOW?

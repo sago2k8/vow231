@@ -12,16 +12,14 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     @user = @identity.user || current_user 
     
-
-    if @user.nil?
+    if @user.nil?   
       @user = User.create( email: @identity.email, oauth_callback: true )
       @identity.update_attribute( :user_id, @user.id )
       if params[:type].to_i == 1 
         @user.add_role("foundation")
-      else
-        @user.update_attribute(:role,2)
+      elsif params[:type].to_i == 0
+       @user.add_role("volunteer")
       end
-
     end
 
     if @user.email.blank? && @identity.email
@@ -39,7 +37,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       else
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: provider.capitalize) if is_navigational_format?
-    end
+      end
     else
       session["devise.#{provider}_data"] = env["omniauth.auth"]
       redirect_to new_user_registration_url

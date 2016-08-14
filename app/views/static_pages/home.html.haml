@@ -5,12 +5,16 @@
   .row
     %h5.flow-text.col.l8.offset-l2.m8.offset-m2.center Apoya a las causas en las que crees a través de las redes sociales que tienes
   .row
-    %button.signup-button.col.l2.m4.s12.push-l3.button-vow.button-vow-hide.waves-effect.waves-light.btn-large
-      Fundacion
-    %button#registro.signup-button.col.l2.m4.s12.offset-l5.offset-m4.button-vow.waves-effect.waves-light.btn-large
+    %div.signup-button.col.l2.m4.s12.push-l3.button-vow.button-vow-hide.waves-effect.waves-light.btn-large
+      = form_tag (omniauth_authorize_path(:user, :twitter)),:method=>'get',:multipart =>true  do
+        = hidden_field_tag 'type', '1'
+        = submit_tag "Fundacion", :class =>"vow-button"
+    %div#registro.signup-button.col.l2.m4.s12.offset-l5.offset-m4.button-vow.waves-effect.waves-light.btn-large
       Regístrate
-    %button.signup-button.col.l2.s12.m4.push-l3.button-vow.button-vow-hide.waves-effect.waves-light.btn-large
-      Voluntario
+    %div.signup-button.col.l2.s12.m4.push-l3.button-vow.button-vow-hide.waves-effect.waves-light.btn-large
+      = form_tag (omniauth_authorize_path(:user, :twitter)),:method=>'get',:multipart =>true  do
+        = hidden_field_tag 'type', '0'
+        = submit_tag "voluntario", :class =>"vow-button"
 .row.fundacion-destacada.carousel
   .col.l4.m6.s10.carousel-item{:href => "#one!"}
     .card.small
