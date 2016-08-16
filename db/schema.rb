@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811193930) do
+ActiveRecord::Schema.define(version: 20160816060132) do
+
+  create_table "foundations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "photo_url"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
@@ -53,6 +62,11 @@ ActiveRecord::Schema.define(version: 20160811193930) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "role"
+    t.string   "name"
+    t.text     "description"
+    t.string   "phone"
+    t.string   "photo_url"
+    t.string   "nickname"
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -61,6 +75,14 @@ ActiveRecord::Schema.define(version: 20160811193930) do
     t.integer "user_id"
     t.integer "role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+  end
+
+  create_table "voluntaries", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "photo_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

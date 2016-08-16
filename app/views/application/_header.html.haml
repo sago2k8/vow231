@@ -7,13 +7,24 @@
         %i.material-icons menu
       %ul.valign-wrapper.left.hide-on-med-and-down.nav-items.col.l5.push-l1
         %li.valign
-          %a{:href => "#vow-description"} Qué es VOW?
+          %a{:href => "/#vow-description"} Qué es VOW?
         %li
-          %a{:href => "#voluntarios"} Voluntarios
+          %a{:href => "/#voluntarios"} Voluntarios
         %li
-          %a{:href => "#fundaciones"} Fundaciones
+          %a{:href => "/#fundaciones"} Fundaciones
       -if current_user != nil
-        = link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, :class => "right hide-on-med-and-down nav-login"
+        %ul#dropdown1.dropdown-content.user-img
+          %li
+            =link_to edit_user_registration_path(@user) do
+              =image_tag(@user.photo_url, :class => "circle responsive-img left z-depth-2")
+            %p
+              =@user.nickname
+          %li
+            = link_to "Cerrar Sesion", destroy_user_session_path, method: :delete
+
+        %a.dropdown-button.right.col.l2.valign-wraper{"data-activates" => "dropdown1", :href => "#!"}
+          %i.material-icons.right arrow_drop_down
+
       -else
         = link_to "login",(omniauth_authorize_path(:user, :twitter)),:class => "right hide-on-med-and-down nav-login"
       %ul#mobile-demo.side-nav

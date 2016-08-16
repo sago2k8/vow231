@@ -2,6 +2,8 @@
 @import "materialize/components/color"
 @import 'materialize'
 
+$primary-color: #09B2C9 !default
+
 .material-icons
 	font-family: 'Material Icons'
 	font-weight: normal
@@ -48,6 +50,8 @@ footer.page-footer
 .button-vow
 	background-color: $vow-button
 	text-transform: capitalize
+	color: white
+	margin-bottom: 10px
 	&-hide
 		display: none
 
@@ -77,6 +81,19 @@ footer.page-footer
 .contacto 
 	& a 
 		color: $vow-button
-		
+.card-panel.edit
+	padding-bottom: 15px
+
+.user-img
+	background-color: $vow-blue
+	
+	& img
+		margin: 15px
+	& p 
+		margin-top: 25px
+		font-weight: 900
+		color: white
+	& li a 
+		color: white
 		
 

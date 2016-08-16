@@ -50,6 +50,7 @@ GEM
       activesupport
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bower-rails (0.10.0)
     buftok (0.2.0)
     builder (3.2.2)
     byebug (9.0.5)
@@ -404,6 +405,7 @@ DEPENDENCIES
   better_errors
   bh
   binding_of_caller
+  bower-rails
   byebug
   cancancan
   capybara

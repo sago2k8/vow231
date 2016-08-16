@@ -31,6 +31,7 @@ $( document ).ready(function(){
 	$('#registro').click(function(){
 		evaluacion($(this));
 		$('.button-vow-hide').toggle();
+		$(".dropdown-button").dropdown();
 		
 
 

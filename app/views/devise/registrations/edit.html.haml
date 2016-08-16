@@ -1,14 +1,31 @@
 .container
   .row
-    .profile.large_panel.col.l8.push-l2
-      = panel title: 'Edita tu perfil', context: :primary do
+    .col.l12
+      = panel  context: :primary do
         = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
           .panel-body
             = f.error_notification
-            .row
-              .form-inputs.col.l4
-                = f.input   :email, required: true, autofocus: true
-
+            .row.panel
+              .col.l6.card-panel.edit.s12
+                %h4.col.l12.center Edita tu perfil
+                .col.l12.input-field
+                  %i.material-icons.prefix.tiny mail
+                  = f.email_field  :email,required: true, autofocus: true
+                  =f.label :email, :class => ["validate"]
+      
+                .col.l12.input-field 
+                  %i.material-icons.prefix account_circle
+                  = f.input_field :name, required: true, autofocus: true
+                  =f.label :name,"Nombre", :class => ["validate"]
+                -if current_user.has_role? :foundation
+                  .col.l12.input-field
+                    %i.material-icons.prefix description
+                    =f.text_field :description, required: true, autofocus: true
+                    =f.label :description,"Descipcion", :class => ["validate"]
+                  .col.l12.input-field
+                    %i.material-icons.prefix description
+                    =f.text_field :phone, required: true, autofocus: true
+                    =f.label :phone,"telefono", :class => ["validate"]
                 = if devise_mapping.confirmable? && resource.pending_reconfirmation?
                   %p
                     Currently waiting confirmation for:
@@ -17,18 +34,21 @@
                 / = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
                 / = f.input :password_confirmation, required: false
                 / = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
-          .panel-footer
-            .form-actions
-              = f.button :submit, "Actualizar", class: "button-vow waves-effect waves-light btn"
+                .panel-footer
+                  .form-actions
+                    = f.button :submit, "Actualizar", class: "button-vow waves-effect waves-light btn"
 
-      - if devise_mapping.omniauthable?
-        = panel title: 'Connect your accounts', context: :primary do
-          .panel-body
-            - resource_class.omniauth_providers.each do |provider|
-              - if resource.identities.where( :provider => provider ).first
-                %p= link_to "Reconnect with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "button-vow waves-effect waves-light btn"
-              - else
-                %p= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "button-vow waves-effect waves-light btn"
+              - if devise_mapping.omniauthable?
+                .col.l6
+                = panel  context: :primary do
+
+                  .card-panel.col.l5.edit.push-l1.s12
+                    %h4.col.l12.center Conécta tus redes sociales 
+                    - resource_class.omniauth_providers.each do |provider|
+                      - if resource.identities.where( :provider => provider ).first
+                        %button.btn.button-vow.waves-effect.waves-light.btn.center.col.l8.push-l2.s12.m12= link_to "Reconectáte con #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "white-text"
+                      - else
+                        %button.btn.button-vow.waves-effect.waves-light.btn.center.col.l8.push-l2.s12.m12 = link_to "Conéctate con #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "white-text"
   .row
     .profile.sidebar.col.m6.push-l3
       = panel title: "Cancel my Account", context: :danger do
